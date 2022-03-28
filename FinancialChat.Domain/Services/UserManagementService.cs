@@ -38,7 +38,7 @@ namespace FinancialChat.Domain.Services
         {
             if (userModel == null) throw new ArgumentNullException(nameof(userModel));
             var existentUser = await _repository.FindUserByNameAsync(userModel.Name);
-            if (existentUser != null) throw new ApiException(ErrorMessages.USER_EXISTS);
+            if (!string.IsNullOrEmpty(existentUser)) throw new ApiException(ErrorMessages.USER_EXISTS);
 
             userModel.Password = EncryptionHelper.EncryptBase64(userModel.Password);
             var entityMapped = _mapper.Map<UserIdentity>(userModel);

@@ -16,7 +16,7 @@ namespace FinancialChat.API.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class ChatManagementController : ControllerBase
     {
         private readonly IChatManagementService _chatService;

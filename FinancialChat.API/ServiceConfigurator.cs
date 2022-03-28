@@ -1,5 +1,5 @@
 ﻿using FinancialChat.Domain.Contracts;
-using FinancialChat.Domain.Mapper;
+using FinancialChat.Domain.Mappers;
 using FinancialChat.Domain.Services;
 using FinancialChat.Infrastructure.Context;
 using FinancialChat.Infrastructure.Repository;
