@@ -2,7 +2,7 @@
 using FinancialChat.Domain.Entities;
 using FinancialChat.Domain.Models;
 
-namespace FinancialChat.Domain.Mapper
+namespace FinancialChat.Domain.Mappers
 {
     public class UserIdentityMapper : Profile
     {
