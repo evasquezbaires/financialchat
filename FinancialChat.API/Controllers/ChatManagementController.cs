@@ -35,14 +35,22 @@ namespace FinancialChat.API.Controllers
         {
             try
             {
-                var result = !IsStockCommand(modelRequest.Message) ?
-                    await _chatService.CreateMessageAsync(modelRequest) :
-                    await _chatService.PublishMessageQueue(modelRequest);
-                var response = new ApiResponse { Data = new { MessageId = result } };
-                if (result > 0)
-                    return Created(string.Empty, response);
+                if (!IsStockCommand(modelRequest.Message))
+                {
+                    var result = await _chatService.CreateMessageAsync(modelRequest);
+                    var response = new ApiResponse { Data = new { MessageId = result } };
+                    if (result > 0)
+                        return Created(string.Empty, response);
+                }
                 else
-                    return NotFound(response);
+                {
+                    var result = await _chatService.PublishMessageQueue(modelRequest);
+                    var response = new ApiResponse { Data = new { MessageQueueId = result } };
+                    if (result != Guid.Empty)
+                        return Created(string.Empty, response);
+                }
+
+                return NotFound();
             }
             catch(Exception ex)
             {
@@ -70,7 +78,7 @@ namespace FinancialChat.API.Controllers
 
         private bool IsStockCommand(string message)
         {
-            return !string.IsNullOrEmpty(message) && message.Equals(ChatMessage.STOCK_COMMAND);
+            return !string.IsNullOrEmpty(message) && message.Contains(ChatMessage.STOCK_COMMAND);
         }
     }
 }

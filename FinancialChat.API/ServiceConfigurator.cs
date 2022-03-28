@@ -29,6 +29,8 @@ namespace FinancialChat.API
             services.AddTransient<IFinancialChatRepository, FinancialChatRepository>();
             services.AddTransient<IChatManagementService, ChatManagementService>();
             services.AddTransient<IUserManagementService, UserManagementService>();
+            services.AddTransient<IBusMessageService, BusMessageService>();
+            services.AddTransient<IBufferProcessService, BufferProcessService>();
             services.AddSingleton<IAuthenticateService, AuthenticateService>();
         }
     }
