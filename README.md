@@ -27,7 +27,8 @@ This project is focused mainly in OOP design, also has consideration of some tec
 Prior to build/run the project in Visual Studio, please execute the prepared scripts (*FinancialChat.Sql*) in a new DB called **FinancialChatDB**.
 
 Update the connection string that is allocated in the *appsettings.json*.
-Update the Keys/Secrets for Service Bus (it will be send by separated e-mail)
+Update the Keys/Secrets for Service Bus (it will be send by separated e-mail).
+Update API endpoints in Blazor App.
 
 When you execute the project you can test the REST API endpoints directly in Swagger or maybe using Postman or any Rest client. You could:
 1. Create a new user (*/api/UserManagement/RegisterUser*)
@@ -37,4 +38,4 @@ When you execute the project you can test the REST API endpoints directly in Swa
 
 # Test
 This project includes a GUI with blazor to allow interact with the operations.
-This project is published in [Azure]() currently, to allow to test end-to-end the endpoints quickly. Azure has the same data configured in the Scripts included in the project.
+This project will be published in [Azure]() currently, to allow to test end-to-end the endpoints quickly. Azure has the same data configured in the Scripts included in the project.
